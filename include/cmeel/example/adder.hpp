@@ -5,7 +5,7 @@ namespace cmeel {
 namespace example {
 auto add(long a, long b) -> long;
 auto sub(long a, long b) -> long;
-}  // namespace cmeel-example
+}  // namespace example
 }  // namespace cmeel
 
 #endif
