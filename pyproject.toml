@@ -1,0 +1,17 @@
+[project]
+name = "cmeel-example"
+version = "0.0.0"
+description = "This is an example project, to show how to use cmeel"
+readme = "README.md"
+requires-python = ">= 3.8"
+license = "BSD-2-Clause"
+authors = [{name = "Guilhem Saurel", email = "guilhem.saurel@laas.fr"}]
+
+[project.urls]
+homepage = "https://github.com/cmeel/cmeel-example"
+repository = "https://github.com/cmeel/cmeel-example.git"
+changelog = "https://github.com/cmeel/cmeel-example/CHANGELOG.md"
+
+[build-system]
+requires = ["cmeel", "packaging"]
+build-backend = "cmeel"
