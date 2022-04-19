@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [v0.0.0] - 2022-04-20
+## [v0.1.0] - 2022-04-20
 
 - Initial minial working example
 
-[Unreleased]: https://github.com/cmeel/cmeel-example/compare/v0.0.0...main
-[v0.0.0]: https://github.com/cmeel/cmeel-example/releases/tag/v0.0.0
+[Unreleased]: https://github.com/cmeel/cmeel-example/compare/v0.1.0...main
+[v0.1.0]: https://github.com/cmeel/cmeel-example/releases/tag/v0.1.0
