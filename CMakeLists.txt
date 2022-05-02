@@ -16,7 +16,8 @@ set(CUSTOM_HEADER_DIR ${PROJECT_ORG}/example)
 
 include(FetchContent)
 FetchContent_Declare("jrl-cmakemodules"
-  GIT_REPOSITORY "https://github.com/jrl-umi3218/jrl-cmakemodules.git")
+  GIT_REPOSITORY "https://github.com/nim65s/jrl-cmakemodules.git"
+  GIT_TAG "py-dev")
 FetchContent_MakeAvailable("jrl-cmakemodules")
 FetchContent_GetProperties("jrl-cmakemodules" SOURCE_DIR JRL_CMAKE_MODULES)
 
@@ -29,7 +30,7 @@ COMPUTE_PROJECT_ARGS(PROJECT_ARGS LANGUAGES CXX)
 project(${PROJECT_NAME} ${PROJECT_ARGS})
 
 # Project dependencies
-find_package(pybind11)
+find_package(pybind11 QUIET)
 
 if(NOT pybind11_FOUND)
   FetchContent_Declare("pybind11"

@@ -13,5 +13,5 @@ repository = "https://github.com/cmeel/cmeel-example.git"
 changelog = "https://github.com/cmeel/cmeel-example/CHANGELOG.md"
 
 [build-system]
-requires = ["cmeel", "packaging"]
-build-backend = "cmeel"
+requires = ["cmeel[build]"]
+build-backend = "cmeel.build"
