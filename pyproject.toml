@@ -8,9 +8,9 @@ license = "BSD-2-Clause"
 authors = [{name = "Guilhem Saurel", email = "guilhem.saurel@laas.fr"}]
 
 [project.urls]
-homepage = "https://github.com/cmeel/cmeel-example"
-repository = "https://github.com/cmeel/cmeel-example.git"
-changelog = "https://github.com/cmeel/cmeel-example/CHANGELOG.md"
+homepage = "https://github.com/cmake-wheel/cmeel-example"
+repository = "https://github.com/cmake-wheel/cmeel-example.git"
+changelog = "https://github.com/cmake-wheel/cmeel-example/CHANGELOG.md"
 
 [build-system]
 requires = ["cmeel[build]"]

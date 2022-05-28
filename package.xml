@@ -7,7 +7,7 @@
   <author email="guilhem.saurel@laas.fr">Guilhem Saurel</author>
   <license>BSD</license>
 
-  <url type="website">https://github.com/cmeel/cmeel-example</url>
+  <url type="website">https://github.com/cmake-wheel/cmeel-example</url>
 
   <build_depend>git</build_depend>
   <build_depend>doxygen</build_depend>

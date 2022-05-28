@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 
 # Project properties
-set(PROJECT_ORG cmeel)
+set(PROJECT_ORG cmake-wheel)
 set(PROJECT_NAME ${PROJECT_ORG}-example)
 set(PROJECT_DESCRIPTION "This is an example project, to show how to use cmeel")
 set(PROJECT_URL https://github.com/${PROJECT_NAMESPACE}/${PROJECT_NAME})
