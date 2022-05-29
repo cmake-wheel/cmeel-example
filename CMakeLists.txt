@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 
 # Project properties
 set(PROJECT_ORG cmake-wheel)
-set(PROJECT_NAME ${PROJECT_ORG}-example)
+set(PROJECT_NAME cmeel-example)
 set(PROJECT_DESCRIPTION "This is an example project, to show how to use cmeel")
 set(PROJECT_URL https://github.com/${PROJECT_NAMESPACE}/${PROJECT_NAME})
 
@@ -12,7 +12,7 @@ option(SUFFIX_SO_VERSION "Suffix library name with its version" ON)
 
 # Project configuration
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
-set(CUSTOM_HEADER_DIR ${PROJECT_ORG}/example)
+set(CUSTOM_HEADER_DIR cmeel/example)
 
 include(FetchContent)
 FetchContent_Declare("jrl-cmakemodules"
@@ -61,7 +61,7 @@ if(SUFFIX_SO_VERSION)
 endif()
 
 # Main Executable
-set(${PROJECT_NAME}_EXE ${PROJECT_ORG}-add)
+set(${PROJECT_NAME}_EXE cmeel-add)
 add_executable(${${PROJECT_NAME}_EXE} src/main.cpp)
 target_link_libraries(${${PROJECT_NAME}_EXE} ${PROJECT_NAME})
 set_target_properties(${${PROJECT_NAME}_EXE} PROPERTIES
