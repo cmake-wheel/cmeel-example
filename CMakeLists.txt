@@ -15,11 +15,21 @@ set(PROJECT_USE_CMAKE_EXPORT TRUE)
 set(CUSTOM_HEADER_DIR cmeel/example)
 
 include(FetchContent)
-FetchContent_Declare("jrl-cmakemodules"
-  GIT_REPOSITORY "https://github.com/nim65s/jrl-cmakemodules.git"
-  GIT_TAG "py-dev")
-FetchContent_MakeAvailable("jrl-cmakemodules")
-FetchContent_GetProperties("jrl-cmakemodules" SOURCE_DIR JRL_CMAKE_MODULES)
+
+# Check if the submodule cmake have been initialized
+set(JRL_CMAKE_MODULES "${CMAKE_CURRENT_LIST_DIR}/cmake")
+IF(NOT EXISTS "${CMAKE_SOURCE_DIR}/cmake/base.cmake")
+  IF(${CMAKE_VERSION} VERSION_LESS "3.14.0")
+    MESSAGE(FATAL_ERROR "\nPlease run the following command first:\ngit submodule update --init\n")
+  ELSE()
+    message(STATUS "JRL cmakemodules not found. Let's fetch it.")
+    FetchContent_Declare("jrl-cmakemodules"
+      GIT_REPOSITORY "https://github.com/cmake-wheel/jrl-cmakemodules.git"
+      GET_TAG "cmeel")
+    FetchContent_MakeAvailable("jrl-cmakemodules")
+    FetchContent_GetProperties("jrl-cmakemodules" SOURCE_DIR JRL_CMAKE_MODULES)
+  ENDIF()
+ENDIF()
 
 # JRL-cmakemodule setup
 include("${JRL_CMAKE_MODULES}/base.cmake")
