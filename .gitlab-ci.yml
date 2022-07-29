@@ -7,7 +7,6 @@ image: quay.io/pypa/manylinux_2_24_x86_64
     when: runner_system_failure
   before_script:
     - $PYTHON -m pip install -U pip
-    - $PYTHON -m pip install -U twine wheel
   script:
     - $PYTHON -m pip wheel .
   artifacts:
@@ -21,6 +20,9 @@ deploy:
     when: runner_system_failure
   only:
     - tags
+  before_script:
+    - python3.10 -m pip install -U pip
+    - python3.10 -m pip install -U twine
   script:
     - |
       python3.10 -m twine upload
