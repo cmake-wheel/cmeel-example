@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- fix Gitlab CD
+
 ## [v0.1.18] - 2022-07-29
 
 - clean Gitlab CD

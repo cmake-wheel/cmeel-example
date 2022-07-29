@@ -24,11 +24,7 @@ deploy:
     - python3.10 -m pip install -U pip
     - python3.10 -m pip install -U twine
   script:
-    - |
-      python3.10 -m twine upload
-      -u gitlab-ci-token -p ${CI_JOB_TOKEN}
-      --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi
-      wh/*
+    - python3.10 -m twine upload -u gitlab-ci-token -p ${CI_JOB_TOKEN} --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi wh/*
 
 build-3.8:
   <<: *build
