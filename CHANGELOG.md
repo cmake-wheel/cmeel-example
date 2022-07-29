@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.2.0] - 2022-07-29
+
+- add multiarch support for aarch64, ppc64le, s390x
+
 ## [v0.1.19] - 2022-07-29
 
 - fix Gitlab CD
@@ -91,6 +95,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial minial working example
 
 [Unreleased]: https://github.com/cmake-wheel/cmeel-example/compare/v0.1.1...main
+[v0.2.0]: https://github.com/cmake-wheel/cmeel-example/compare/v0.1.19...v0.2.0
 [v0.1.19]: https://github.com/cmake-wheel/cmeel-example/compare/v0.1.18...v0.1.19
 [v0.1.18]: https://github.com/cmake-wheel/cmeel-example/compare/v0.1.17...v0.1.18
 [v0.1.17]: https://github.com/cmake-wheel/cmeel-example/compare/v0.1.16...v0.1.17
