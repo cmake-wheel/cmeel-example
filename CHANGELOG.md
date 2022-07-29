@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [v0.1.17] - 2022-07-29
 
+- clean Gitlab CD
+
 ## [v0.1.16] - 2022-07-29
 
 - clean Github CD
