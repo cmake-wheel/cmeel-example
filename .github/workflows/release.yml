@@ -12,11 +12,11 @@ jobs:
       image: quay.io/pypa/manylinux_2_24_x86_64
     strategy:
       matrix:
-        python: ["3.8", "3.9", "3.10"]
+        python-version: ["3.8", "3.9", "3.10"]
     steps:
       - uses: actions/checkout@v2
-      - run: python${{ matrix.python }} -m pip install -U pip
-      - run: python${{ matrix.python }} -m pip wheel -w wh .
+      - run: python${{ matrix.python-version }} -m pip install -U pip
+      - run: python${{ matrix.python-version }} -m pip wheel -w wh .
       - uses: actions/upload-artifact@v3
         with:
           name: wh
