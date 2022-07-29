@@ -1,5 +1,9 @@
 image: quay.io/pypa/manylinux_2_24_x86_64
 
+stages:
+  - build
+  - deploy
+
 .build: &build
   stage: build
   retry:
@@ -7,11 +11,14 @@ image: quay.io/pypa/manylinux_2_24_x86_64
     when: runner_system_failure
   before_script:
     - $PYTHON -m pip install -U pip
+    - apt update
+    - apt install -y tree
   script:
-    - $PYTHON -m pip wheel .
+    - $PYTHON -m pip wheel -w wh .
+    - tree
   artifacts:
     paths:
-      - cmeel_example*.whl
+      - wh/cmeel_example*.whl
 
 deploy:
   stage: deploy
@@ -23,12 +30,11 @@ deploy:
   before_script:
     - python3.10 -m pip install -U pip
     - python3.10 -m pip install -U twine
+    - apt update
+    - apt install -y tree
   script:
-    - |
-      python3.10 -m twine upload
-      -u gitlab-ci-token -p ${CI_JOB_TOKEN}
-      --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi
-      cmeel_example*.whl
+    - tree
+    - python3.10 -m twine upload -u gitlab-ci-token -p ${CI_JOB_TOKEN} --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi wh/*
 
 build-3.8:
   <<: *build
