@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- fix release
+
 ## [v0.1.1] - 2022-07-29
 
 - Move to cmake-wheel org
