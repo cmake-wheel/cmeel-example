@@ -22,8 +22,11 @@ deploy:
   only:
     - tags
   script:
-    - python3.10 -m twine upload -u gitlab-ci-token -p ${CI_JOB_TOKEN} --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi cmeel_example*.whl
-    #- python3.10 -m twine upload -u __token__ -p ${PYPI_TOKEN} cmeel_example*.whl
+    - |
+      python3.10 -m twine upload
+      -u gitlab-ci-token -p ${CI_JOB_TOKEN}
+      --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi
+      cmeel_example*.whl
 
 build-3.8:
   <<: *build

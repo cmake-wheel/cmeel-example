@@ -7,7 +7,9 @@ on:
 
 jobs:
   release:
-    runs-on: quay.io/pypa/manylinux_2_24_x86_64
+    runs-on: ubuntu-latest
+    container:
+      image: quay.io/pypa/manylinux_2_24_x86_64
     steps:
       - uses: actions/checkout@v2
       - run: python3.8 -m pip install -U pip
