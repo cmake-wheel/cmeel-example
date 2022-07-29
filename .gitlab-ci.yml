@@ -1,1 +1,41 @@
-include: https://rainboard.laas.fr/project/example-adder/.gitlab-ci.yml
+image: quay.io/pypa/manylinux_2_24_x86_64
+
+.build: &build
+  stage: build
+  retry:
+    max: 2
+    when: runner_system_failure
+  before_script:
+    - $PYTHON -m pip install -U pip
+    - $PYTHON -m pip install -U twine wheel
+  script:
+    - $PYTHON -m pip wheel .
+  artifacts:
+    paths:
+      - cmeel_example*.whl
+
+deploy:
+  stage: deploy
+  retry:
+    max: 2
+    when: runner_system_failure
+  only:
+    - tags
+  script:
+    - $PYTHON -m twine upload -u gitlab-ci-token -p ${CI_JOB_TOKEN} --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi cmeel_example*.whl
+    #- $PYTHON -m twine upload -u __token__ -p ${PYPI_TOKEN} cmeel_example*.whl
+
+build-3.8:
+  <<: *build
+  variables:
+    PYTHON: python3.8
+
+build-3.9:
+  <<: *build
+  variables:
+    PYTHON: python3.9
+
+build-3.10:
+  <<: *build
+  variables:
+    PYTHON: python3.10
