@@ -1,4 +1,4 @@
-ADD_UNIT_TEST(add add.cpp)
+add_unit_test(add add.cpp)
 target_link_libraries(add ${PROJECT_NAME})
 
 add_test(NAME exe-fail COMMAND ${CMAKE_BINARY_DIR}/${${PROJECT_NAME}_EXE} 3 4)
