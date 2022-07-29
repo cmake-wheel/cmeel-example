@@ -15,5 +15,5 @@ sed -i "/^\[Unreleased\]/a [v$NEW]: https://github.com/cmake-wheel/cmeel-example
 git add pyproject.toml CHANGELOG.md
 git commit -m "Release v$NEW"
 git tag -s "v$NEW" -m "Release v$NEW"
-git push
+#git push
 git push --tags
