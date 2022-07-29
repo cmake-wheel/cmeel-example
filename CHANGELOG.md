@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- setup github-actions for dependabot
+
 ## [v0.2.0] - 2022-07-29
 
 - add multiarch support for aarch64, ppc64le, s390x
