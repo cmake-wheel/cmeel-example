@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.1.19] - 2022-07-29
+
 - fix Gitlab CD
 
 ## [v0.1.18] - 2022-07-29
@@ -89,6 +91,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial minial working example
 
 [Unreleased]: https://github.com/cmake-wheel/cmeel-example/compare/v0.1.1...main
+[v0.1.19]: https://github.com/cmake-wheel/cmeel-example/compare/v0.1.18...v0.1.19
 [v0.1.18]: https://github.com/cmake-wheel/cmeel-example/compare/v0.1.17...v0.1.18
 [v0.1.17]: https://github.com/cmake-wheel/cmeel-example/compare/v0.1.16...v0.1.17
 [v0.1.16]: https://github.com/cmake-wheel/cmeel-example/compare/v0.1.15...v0.1.16
