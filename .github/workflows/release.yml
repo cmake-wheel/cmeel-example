@@ -6,28 +6,12 @@ on:
       - "v*"
 
 jobs:
-  native:
-    runs-on: ubuntu-latest
-    name: Build ${{ matrix.python-version }}
-    container:
-      image: quay.io/pypa/manylinux_2_24_x86_64
-    strategy:
-      matrix:
-        python-version: ["3.8", "3.9", "3.10"]
-    steps:
-      - uses: actions/checkout@v2
-      - run: python${{ matrix.python-version }} -m pip install -U pip
-      - run: python${{ matrix.python-version }} -m pip wheel -w wh .
-      - uses: actions/upload-artifact@v3
-        with:
-          name: wh
-          path: wh
-  multiarch:
+  build:
     runs-on: ubuntu-latest
     name: Build ${{ matrix.python-version }} on ${{ matrix.arch }}
     strategy:
       matrix:
-        arch: ["aarch64", "ppc64le", "s390x"]
+        arch: ["x86_64", "aarch64", "ppc64le", "s390x"]
         python-version: ["3.8","3.9","3.10"]
     steps:
       - uses: actions/checkout@v2
@@ -48,7 +32,7 @@ jobs:
           name: wh
           path: wh
   release:
-    needs: ["native", "multiarch"]
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

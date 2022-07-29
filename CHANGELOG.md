@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - setup github-actions for dependabot
+- more isolation for x86_64
 
 ## [v0.2.0] - 2022-07-29
 
