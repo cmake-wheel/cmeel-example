@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- fix soabi
+- revert isolation for x86_64
+
 ## [v0.2.1] - 2022-07-30
 
 - setup github-actions for dependabot
