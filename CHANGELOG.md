@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.2.2] - 2022-07-30
+
+- fix soabi
+- revert isolation for x86_64
+
+## [v0.2.1] - 2022-07-30
+
 - setup github-actions for dependabot
 
 ## [v0.2.0] - 2022-07-29
@@ -97,6 +104,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial minial working example
 
 [Unreleased]: https://github.com/cmake-wheel/cmeel-example/compare/v0.1.1...main
+[v0.2.2]: https://github.com/cmake-wheel/cmeel-example/compare/v0.2.1...v0.2.2
+[v0.2.1]: https://github.com/cmake-wheel/cmeel-example/compare/v0.2.0...v0.2.1
 [v0.2.0]: https://github.com/cmake-wheel/cmeel-example/compare/v0.1.19...v0.2.0
 [v0.1.19]: https://github.com/cmake-wheel/cmeel-example/compare/v0.1.18...v0.1.19
 [v0.1.18]: https://github.com/cmake-wheel/cmeel-example/compare/v0.1.17...v0.1.18
