@@ -44,19 +44,19 @@ compute_project_args(PROJECT_ARGS LANGUAGES CXX)
 project(${PROJECT_NAME} ${PROJECT_ARGS})
 
 # Project dependencies
+if(BUILD_PYTHON_INTERFACE)
+  set(PYTHON_COMPONENTS Interpreter Development.Module)
+  findpython()
+  string(REGEX REPLACE "-" "_" PY_NAME ${PROJECT_NAME})
+  set(${PY_NAME}_INSTALL_DIR ${PYTHON_SITELIB}/${PY_NAME})
+endif()
+
 find_package(pybind11 QUIET)
 
 if(NOT pybind11_FOUND)
   FetchContent_Declare("pybind11"
                        GIT_REPOSITORY "https://github.com/pybind/pybind11.git")
   FetchContent_MakeAvailable("pybind11")
-endif()
-
-if(BUILD_PYTHON_INTERFACE)
-  set(PYTHON_COMPONENTS Interpreter Development.Module)
-  findpython()
-  string(REGEX REPLACE "-" "_" PY_NAME ${PROJECT_NAME})
-  set(${PY_NAME}_INSTALL_DIR ${PYTHON_SITELIB}/${PY_NAME})
 endif()
 
 # Main Library
