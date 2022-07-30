@@ -15,7 +15,7 @@ changelog = "https://github.com/cmake-wheel/cmeel-example/CHANGELOG.md"
 [build-system]
 requires = ["cmeel[build]", "ninja"]
 build-backend = "cmeel.build"
-test-cmd = ["tree", "BUILD_DIR"]
+test-cmd = ["dir", "BUILD_DIR"]
 
 [tool.cibuildwheel.linux]
 repair-wheel-command = ""
