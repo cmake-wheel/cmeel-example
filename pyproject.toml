@@ -15,4 +15,4 @@ changelog = "https://github.com/cmake-wheel/cmeel-example/CHANGELOG.md"
 [build-system]
 requires = ["cmeel[build]"]
 build-backend = "cmeel.build"
-configure-args = ["-DWINDOWS_EXPORT_ALL_SYMBOLS=ON"]
+configure-args = ["-DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=ON"]
