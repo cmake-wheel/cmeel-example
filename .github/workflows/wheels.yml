@@ -11,6 +11,8 @@ jobs:
         os: [windows-latest]
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: 'true'
       - run: python3 -m pip install -U pip
       - run: python3 -m pip install -U ninja
       - run: python3 -m pip wheel -w wh .
