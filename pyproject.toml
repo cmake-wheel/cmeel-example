@@ -13,6 +13,6 @@ repository = "https://github.com/cmake-wheel/cmeel-example.git"
 changelog = "https://github.com/cmake-wheel/cmeel-example/CHANGELOG.md"
 
 [build-system]
-requires = ["cmeel[build]"]
+requires = ["cmeel[build]", "ninja"]
 build-backend = "cmeel.build"
 configure-args = ["-DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=ON"]
