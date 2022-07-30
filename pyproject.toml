@@ -16,4 +16,4 @@ changelog = "https://github.com/cmake-wheel/cmeel-example/CHANGELOG.md"
 requires = ["cmeel[build]", "ninja"]
 build-backend = "cmeel.build"
 configure-args = ["-DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=ON"]
-run-tests = false
+run-tests-after-install = false
