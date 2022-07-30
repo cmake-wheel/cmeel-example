@@ -1,7 +1,7 @@
 set(${PY_NAME}_SOURCES module.cpp)
 
 add_library(${PY_NAME} SHARED ${${PY_NAME}_SOURCES})
-target_link_libraries(${PY_NAME} PUBLIC ${PROJECT_NAME})
+target_link_libraries(${PY_NAME} PUBLIC ${PROJECT_NAME} Python3::Module)
 target_link_libraries(${PY_NAME} PRIVATE pybind11::pybind11)
 set_target_properties(
   ${PY_NAME}
