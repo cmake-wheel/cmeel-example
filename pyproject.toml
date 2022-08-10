@@ -1,6 +1,6 @@
 [project]
 name = "cmeel-example"
-version = "0.3.0"
+version = "0.3.1"
 description = "This is an example project, to show how to use cmeel"
 readme = "README.md"
 requires-python = ">= 3.8"
