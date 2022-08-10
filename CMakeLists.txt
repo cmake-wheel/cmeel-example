@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.17)
 
 # Project properties
 set(PROJECT_ORG cmake-wheel)
@@ -22,8 +22,7 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/cmake/base.cmake")
   message(STATUS "JRL cmakemodules not found. Let's fetch it.")
   FetchContent_Declare(
     "jrl-cmakemodules"
-    GIT_REPOSITORY "https://github.com/jrl-umi3218/jrl-cmakemodules.git"
-    GIT_TAG "cmeel")
+    GIT_REPOSITORY "https://github.com/jrl-umi3218/jrl-cmakemodules.git")
   FetchContent_MakeAvailable("jrl-cmakemodules")
   FetchContent_GetProperties("jrl-cmakemodules" SOURCE_DIR JRL_CMAKE_MODULES)
 endif()
