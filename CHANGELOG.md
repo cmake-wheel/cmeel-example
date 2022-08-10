@@ -7,7 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- test osx
+- test on macOS X
+- release wheels with cibuildwheel for:
+    - CPython 3.8, 3.9, 3.10 / pypy 3.8, 3.9
+    - ManyLinux 2.28 (x86_64, aarch64, ppc64le) & 2.17 (i686, s390x)
+    - MuslLinux 1.1 x86_64, aarch64, ppc64le, i686, s390x
+    - macOS X x86_64, universal2
 
 ## [v0.2.3] - 2022-07-30
 
