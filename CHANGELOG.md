@@ -7,8 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [vminor] - 2022-08-10
-
 - test on macOS X
 - release wheels with cibuildwheel for:
     - CPython 3.8, 3.9, 3.10 / pypy 3.8, 3.9
@@ -116,8 +114,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial minial working example
 
-[Unreleased]: https://github.com/cmake-wheel/cmeel-example/compare/v0.1.1...main
-[vminor]: https://github.com/cmake-wheel/cmeel-example/compare/v0.2.3...vminor
+[Unreleased]: https://github.com/cmake-wheel/cmeel-example/compare/v0.2.3...main
 [v0.2.3]: https://github.com/cmake-wheel/cmeel-example/compare/v0.2.2...v0.2.3
 [v0.2.2]: https://github.com/cmake-wheel/cmeel-example/compare/v0.2.1...v0.2.2
 [v0.2.1]: https://github.com/cmake-wheel/cmeel-example/compare/v0.2.0...v0.2.1
