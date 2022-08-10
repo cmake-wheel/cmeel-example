@@ -52,6 +52,6 @@ jobs:
       - run: python -m pip install twine
       - run: python -m twine upload -u __token__ -p ${{ secrets.PYPI_TOKEN }} artifact/cmeel_example*.whl
       - run: echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
-      - run: gh release create -t "Release ${{ env.TAG}}" -n "$(awk '/## \[${{ env.TAG }}] - /{flag=1;next}/## \[/{flag=0}flag' CHANGELOG.md)" ${{ env.TAG }} wh/cmeel_example*.whl
+      - run: gh release create -t "Release ${{ env.TAG}}" -n "$(awk '/## \[${{ env.TAG }}] - /{flag=1;next}/## \[/{flag=0}flag' CHANGELOG.md)" ${{ env.TAG }} artifact/cmeel_example*.whl
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
