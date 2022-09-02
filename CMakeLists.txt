@@ -69,8 +69,13 @@ endif()
 set(${PROJECT_NAME}_EXE cmeel-add)
 add_executable(${${PROJECT_NAME}_EXE} src/main.cpp)
 target_link_libraries(${${PROJECT_NAME}_EXE} ${PROJECT_NAME})
-set_target_properties(${${PROJECT_NAME}_EXE} PROPERTIES INSTALL_RPATH
-                                                        "\$ORIGIN/../lib")
+if(APPLE)
+  set_target_properties(${${PROJECT_NAME}_EXE}
+                        PROPERTIES INSTALL_RPATH "@executable_path/../lib")
+else()
+  set_target_properties(${${PROJECT_NAME}_EXE} PROPERTIES INSTALL_RPATH
+                                                          "\$ORIGIN/../lib")
+endif()
 
 # Python Bindings
 if(BUILD_PYTHON_INTERFACE)
