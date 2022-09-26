@@ -25,6 +25,3 @@ changelog = "https://github.com/cmake-wheel/cmeel-example/CHANGELOG.md"
 [build-system]
 requires = ["cmeel[build]"]
 build-backend = "cmeel.build"
-
-[tool.cibuildwheel]
-repair-wheel-command = ""

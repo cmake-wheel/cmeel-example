@@ -39,6 +39,7 @@ jobs:
           CIBW_MANYLINUX_PPC64LE_IMAGE: "quay.io/pypa/manylinux_2_28_ppc64le"
           CIBW_MANYLINUX_I686_IMAGE: "quay.io/pypa/manylinux2014_i686"
           CIBW_MANYLINUX_S390X_IMAGE: "quay.io/pypa/manylinux2014_s390x"
+          CIBW_REPAIR_WHEEL_COMMAND: ""
       - uses: actions/upload-artifact@v3
         with:
           path: wh
