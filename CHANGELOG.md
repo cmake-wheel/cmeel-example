@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- fix PyPy releases
+
 ## [v0.4.3] - 2022-09-26
 
 - ci: release: separate builds in different jobs
