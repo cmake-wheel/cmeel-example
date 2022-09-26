@@ -12,6 +12,7 @@ jobs:
     strategy:
       matrix:
         os: ["ubuntu-latest", "macos-latest"]
+        build: ["cp37-*", "cp38-*", "cp39-*", "cp310-*", "cp311-*", "pypy37-*", "pypy38-*", "pypy39-*"]
     steps:
       - uses: actions/checkout@v3
         with:
@@ -29,6 +30,7 @@ jobs:
       - run: touch setup.py
       - run: python -m cibuildwheel --output-dir wh
         env:
+          CIBW_BUILD: ${{ matrix.build }}
           CIBW_ARCHS_LINUX: "auto aarch64 ppc64le s390x"
           CIBW_ARCHS_MACOS: "x86_64 universal2"
           CIBW_MANYLINUX_X86_64_IMAGE: "quay.io/pypa/manylinux_2_28_x86_64"
