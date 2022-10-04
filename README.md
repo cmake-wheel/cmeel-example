@@ -5,3 +5,26 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 This is an example project, to show how to use [cmeel](https://github.com/cmake-wheel/cmeel), and to provide tests for it
+
+## Test this
+
+### Installation
+
+Binary wheels are published on PyPI for many Linux and mac OS flavors and architectures, so you'll probably be able to
+install from binaryies with `python -m pip install cmeel-example`
+(don't forget to use an up-to-date `pip` with `python -m pip install -U pip`).
+
+If you want to build it yourself: `python -m pip install git+https://github.com/cmake-wheel/cmeel-example.git`
+
+### Usage
+
+From shell:
+```
+cmeel-add 3 4
+```
+
+From python:
+```python
+import cmeel_example
+cmeel_example.cmeel_add(3, 4)
+```
