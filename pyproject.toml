@@ -20,7 +20,7 @@ classifiers = [
 [project.urls]
 homepage = "https://github.com/cmake-wheel/cmeel-example"
 repository = "https://github.com/cmake-wheel/cmeel-example.git"
-changelog = "https://github.com/cmake-wheel/cmeel-example/CHANGELOG.md"
+changelog = "https://github.com/cmake-wheel/cmeel-example/blob/main/CHANGELOG.md"
 
 [build-system]
 requires = ["cmeel[build]"]
