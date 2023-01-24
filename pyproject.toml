@@ -16,7 +16,6 @@ classifiers = [
     "Topic :: System :: Software Distribution",
 ]
 
-
 [project.urls]
 homepage = "https://github.com/cmake-wheel/cmeel-example"
 repository = "https://github.com/cmake-wheel/cmeel-example.git"
