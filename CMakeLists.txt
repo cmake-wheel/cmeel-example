@@ -95,4 +95,4 @@ install(
 install(TARGETS ${${PROJECT_NAME}_EXE}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES package.xml DESTINATION share/${PROJECT_NAME})
-message(FATAR_WARNING "stop here.")
+message(FATAL_ERROR "stop here.")
