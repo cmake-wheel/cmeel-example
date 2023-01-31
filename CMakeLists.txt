@@ -97,8 +97,7 @@ install(TARGETS ${${PROJECT_NAME}_EXE}
 install(FILES package.xml DESTINATION share/${PROJECT_NAME})
 
 execute_process(
-        COMMAND "${PYTHON_EXECUTABLE}" "-c"
-                "import platform; print (platform.machine())"
+        COMMAND "env"
                 OUTPUT_VARIABLE PF
         ERROR_QUIET)
 
