@@ -96,9 +96,9 @@ install(TARGETS ${${PROJECT_NAME}_EXE}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES package.xml DESTINATION share/${PROJECT_NAME})
 
-execute_process(
-        COMMAND "env"
-                OUTPUT_VARIABLE PF
-        ERROR_QUIET)
+#execute_process(
+        #COMMAND "env"
+                #OUTPUT_VARIABLE PF
+        #ERROR_QUIET)
 
-message(FATAL_ERROR "stop here: ${PF}")
+#message(FATAL_ERROR "stop here: ${PF}")
