@@ -95,4 +95,11 @@ install(
 install(TARGETS ${${PROJECT_NAME}_EXE}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES package.xml DESTINATION share/${PROJECT_NAME})
-message(FATAL_ERROR "stop here.")
+
+execute_process(
+        COMMAND "${PYTHON_EXECUTABLE}" "-c"
+                "import platform; print (platform.machine())"
+                OUTPUT_VARIABLE PF
+        ERROR_QUIET)
+
+message(FATAL_ERROR "stop here: ${PF}")
