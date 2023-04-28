@@ -24,5 +24,11 @@ changelog = "https://github.com/cmake-wheel/cmeel-example/blob/main/CHANGELOG.md
 homepage = "https://github.com/cmake-wheel/cmeel-example"
 repository = "https://github.com/cmake-wheel/cmeel-example.git"
 
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+target-version = "py37"
+
 [tool.tomlsort]
 all = true
