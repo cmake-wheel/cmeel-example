@@ -49,6 +49,13 @@ jobs:
           python -m pip install -U pip
           python -m pip install wheel simple503
           python -m simple503 --sort --base-url "${{ github.workspace }}/artifact" artifact
+          python -m pip install -U pip
+      - name: debug
+        run: ls "${{ github.workspace }}/artifact"
+      - name: debug
+        run: ls "${{ github.workspace }}/artifact/*"
+      - name: debug
+        run: cat "${{ github.workspace }}/artifact/cmeel-example/index.html"
       - name: install wheel
         run: python -m pip install -i "file:///${{ github.workspace }}/artifact" cmeel-example
       - name: test binary
