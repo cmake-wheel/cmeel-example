@@ -53,7 +53,7 @@ jobs:
       - name: debug
         run: ls "${{ github.workspace }}/artifact"
       - name: debug
-        run: ls "${{ github.workspace }}/artifact/*"
+        run: cat "${{ github.workspace }}/artifact/index.html"
       - name: debug
         run: cat "${{ github.workspace }}/artifact/cmeel-example/index.html"
       - name: install wheel
