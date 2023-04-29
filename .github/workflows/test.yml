@@ -35,7 +35,6 @@ jobs:
         run: python -m pip wheel -vw wh .
         env:
           CMEEL_LOG_LEVEL: 'DEBUG'
-          SYSTEM_VERSION_COMPAT: 0
       - uses: actions/upload-artifact@v3
         with:
           path: wh
