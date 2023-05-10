@@ -4,7 +4,6 @@ on: ["push", "pull_request"]
 
 env:
   CMEEL_LOG_LEVEL: DEBUG
-  SYSTEM_VERSION_COMPAT: 0
 
 jobs:
   build:
@@ -37,6 +36,8 @@ jobs:
           python -m pip install wheel
       - name: build cmeel wheel
         run: python -m pip wheel -vw wh .
+        env:
+          SYSTEM_VERSION_COMPAT: 0
       - uses: actions/upload-artifact@v3
         with:
           path: wh
