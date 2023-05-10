@@ -9,20 +9,18 @@ jobs:
   build:
     name: Build ${{ matrix.python-version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    env:
-      SYSTEM_VERSION_COMPAT: 1
     strategy:
       matrix:
-        os: ["ubuntu-latest", "macos-latest"]
+        os: ["ubuntu-latest", "macos-13"]
         python-version: ["3.9", "3.10", "3.11"]
         include:
           - os: "ubuntu-latest"
             python-version: "3.7"
           - os: "ubuntu-latest"
             python-version: "3.8"
-          - os: "macos-11"
+          - os: "macos-13"
             python-version: "3.7"
-          - os: "macos-11"
+          - os: "macos-13"
             python-version: "3.8"
     steps:
       - uses: actions/checkout@v3
@@ -48,16 +46,16 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: ["ubuntu-latest", "macos-latest"]
+        os: ["ubuntu-latest", "macos-13"]
         python-version: ["3.9", "3.10", "3.11"]
         include:
           - os: "ubuntu-latest"
             python-version: "3.7"
           - os: "ubuntu-latest"
             python-version: "3.8"
-          - os: "macos-11"
+          - os: "macos-13"
             python-version: "3.7"
-          - os: "macos-11"
+          - os: "macos-13"
             python-version: "3.8"
     steps:
       - uses: actions/download-artifact@v3
