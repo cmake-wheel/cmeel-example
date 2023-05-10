@@ -4,6 +4,7 @@ on: ["push", "pull_request"]
 
 env:
   CMEEL_LOG_LEVEL: DEBUG
+  SYSTEM_VERSION_COMPAT: 0
 
 jobs:
   build:
