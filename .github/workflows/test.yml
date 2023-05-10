@@ -2,6 +2,9 @@ name: Check build
 
 on: ["push", "pull_request"]
 
+env:
+  CMEEL_LOG_LEVEL: DEBUG
+
 jobs:
   build:
     name: Build ${{ matrix.python-version }} on ${{ matrix.os }}
@@ -33,8 +36,6 @@ jobs:
           python -m pip install wheel
       - name: build cmeel wheel
         run: python -m pip wheel -vw wh .
-        env:
-          CMEEL_LOG_LEVEL: 'DEBUG'
       - uses: actions/upload-artifact@v3
         with:
           path: wh
