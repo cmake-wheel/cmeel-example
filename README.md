@@ -16,7 +16,10 @@ Binary wheels are published on PyPI for many Linux and mac OS flavors and archit
 install from binaries with `python -m pip install cmeel-example`
 (don't forget to use an up-to-date `pip` with `python -m pip install -U pip`).
 
-If you want to build it yourself: `python -m pip install git+https://github.com/cmake-wheel/cmeel-example.git`
+If pip can't find binaries for your platform, it will download the `.tar.gz` source and build it for you.
+
+If you really want to explicitely build it yourself:
+`python -m pip install git+https://github.com/cmake-wheel/cmeel-example.git`
 
 ### Usage
 
