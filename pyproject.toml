@@ -1,5 +1,5 @@
 [build-system]
-build-backend = "cmeel.build"
+build-backend = "cmeel"
 requires = ["cmeel[build]"]
 
 [project]
@@ -16,7 +16,7 @@ classifiers = [
 description = "This is an example project, to show how to use cmeel"
 license = "BSD-2-Clause"
 name = "cmeel-example"
-requires-python = ">= 3.7"
+requires-python = ">= 3.8"
 version = "0.4.14"
 
 [project.urls]
@@ -28,7 +28,7 @@ repository = "https://github.com/cmake-wheel/cmeel-example.git"
 profile = "black"
 
 [tool.ruff]
-target-version = "py37"
+target-version = "py38"
 
 [tool.tomlsort]
 all = true
