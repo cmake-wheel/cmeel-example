@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - fix changelog
 - update CMake submodule
+- use CMake submodule for releases
 
 ## [v0.4.7] - 2023-01-24
 
