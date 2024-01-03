@@ -30,7 +30,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: "artifact-${{ matrix.os }}-${{ matrix.python-version }}"
-          path: wh/cmeel_example*
+          path: wh
 
   test:
     needs: ["build"]
