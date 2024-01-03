@@ -24,9 +24,6 @@ changelog = "https://github.com/cmake-wheel/cmeel-example/blob/main/CHANGELOG.md
 homepage = "https://github.com/cmake-wheel/cmeel-example"
 repository = "https://github.com/cmake-wheel/cmeel-example.git"
 
-[tool.cmeel]
-build-number = 0
-
 [tool.isort]
 profile = "black"
 
