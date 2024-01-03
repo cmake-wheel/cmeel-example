@@ -29,7 +29,7 @@ jobs:
         run: python -m pip wheel -vw wh .
       - uses: actions/upload-artifact@v4
         with:
-          path: wh
+          path: wh/cmeel_example*
 
   test:
     needs: ["build"]
