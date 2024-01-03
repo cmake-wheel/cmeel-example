@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
       - run: mkdir /tmp/wh
-      - run: mv artifact-*/* /tmp/wh
+      - run: mv -f artifact-*/* /tmp/wh
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
