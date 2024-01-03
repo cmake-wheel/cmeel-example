@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- ci: fix artifact releases
+
 ## [0.5.5] - 2024-01-03
+
+- update CI
 
 ## [0.5.4] - 2023-11-15
 
