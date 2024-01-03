@@ -80,11 +80,11 @@ jobs:
         run: >
           git verify-tag --raw ${{ github.ref_name }} 2>&1
           | grep -q 'VALIDSIG 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
       - run: pipx install twine
-      - run: twine upload -u __token__ -p "${{ secrets.PYPI_TOKEN }}" artifact/*.whl
-      - run: twine upload -u __token__ -p "${{ secrets.PYPI_TOKEN }}" artifact/*.tar.gz || true
+      - run: twine upload -u __token__ -p "${{ secrets.PYPI_TOKEN }}" artifact-*/*.whl
+      - run: twine upload -u __token__ -p "${{ secrets.PYPI_TOKEN }}" artifact-*/*.tar.gz || true
       - run: echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
-      - run: gh release create -t "Release ${{ env.TAG}}" -n "$(awk '/## \[${{ env.TAG }}] - /{flag=1;next}/## \[/{flag=0}flag' CHANGELOG.md)" ${{ env.TAG }} artifact/*
+      - run: gh release create -t "Release ${{ env.TAG}}" -n "$(awk '/## \[${{ env.TAG }}] - /{flag=1;next}/## \[/{flag=0}flag' CHANGELOG.md)" ${{ env.TAG }} artifact-*/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

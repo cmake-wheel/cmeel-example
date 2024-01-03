@@ -42,6 +42,8 @@ jobs:
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
     steps:
       - uses: actions/download-artifact@v4
+      - run: mkdir /tmp/wh
+      - run: mv artifact-*/* /tmp/wh
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
@@ -49,10 +51,10 @@ jobs:
         run: |
           python -m pip install -U pip
           python -m pip install wheel simple503
-          python -m simple503 --sort --base-url "${{ github.workspace }}/artifact" artifact
+          python -m simple503 --sort --base-url /tmp/wh /tmp/wh
           python -m pip install -U pip
       - name: install wheel
-        run: python -m pip install -i "file:///${{ github.workspace }}/artifact" cmeel-example
+        run: python -m pip install -i "file:///tmp/wh" cmeel-example
       - name: test binary
         run: cmeel-add 3 4
       - name: test module
