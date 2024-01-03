@@ -16,14 +16,14 @@ env:
 jobs:
   wheel:
     name: "${{ matrix.build }} ${{ matrix.os }} ${{ matrix.arch }}"
-    runs-on: "${{ matrix.os }}"
+    runs-on: "${{ matrix.os }}-latest"
     strategy:
       matrix:
-        os: ["ubuntu-latest", "macos-latest"]
+        os: ["ubuntu", "macos"]
         arch: ["x86_64", "aarch64"]
-        build: ["cp38-*", "cp39-*", "cp310-*", "cp311-*", "cp312-*"]
+        build: ["cp38", "cp39", "cp310", "cp311", "cp312"]
         exclude:
-          - os: "macos-latest"
+          - os: "macos"
             arch: "aarch64"
     steps:
       - uses: actions/checkout@v4
@@ -37,14 +37,15 @@ jobs:
       - run: pipx install cibuildwheel
       - run: cibuildwheel --output-dir wh
         env:
-          CIBW_BUILD: ${{ matrix.build }}
-          CIBW_ARCHS: ${{ matrix.arch }}
+          CIBW_BUILD: "${{ matrix.build }}-*"
+          CIBW_ARCHS: "${{ matrix.arch }}"
           CIBW_MANYLINUX_X86_64_IMAGE: "quay.io/pypa/manylinux_2_28_x86_64"
           CIBW_MANYLINUX_AARCH64_IMAGE: "quay.io/pypa/manylinux_2_28_aarch64"
           CIBW_REPAIR_WHEEL_COMMAND: ""
           CIBW_ENVIRONMENT: CMEEL_LOG_LEVEL="DEBUG"
       - uses: actions/upload-artifact@v4
         with:
+          name: "artifact-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.build }}"
           path: wh/cmeel_example*
 
   sdist:
