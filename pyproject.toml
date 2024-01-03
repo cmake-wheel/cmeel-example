@@ -17,7 +17,7 @@ description = "This is an example project, to show how to use cmeel"
 license = "BSD-2-Clause"
 name = "cmeel-example"
 requires-python = ">= 3.8"
-version = "0.5.6"
+version = "0.5.7"
 
 [project.urls]
 changelog = "https://github.com/cmake-wheel/cmeel-example/blob/main/CHANGELOG.md"
