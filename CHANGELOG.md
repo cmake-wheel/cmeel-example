@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2024-01-23
+
 - CI: use pypi-publish
 
 ## [0.5.7] - 2024-01-03
@@ -194,7 +196,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial minial working example
 
-[Unreleased]: https://github.com/cmake-wheel/cmeel-example/compare/v0.5.7...HEAD
+[Unreleased]: https://github.com/cmake-wheel/cmeel-example/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/cmake-wheel/cmeel-example/compare/v0.5.7...v0.6.0
 [0.5.7]: https://github.com/cmake-wheel/cmeel-example/compare/v0.5.6...v0.5.7
 [0.5.6]: https://github.com/cmake-wheel/cmeel-example/compare/v0.5.5...v0.5.6
 [0.5.5]: https://github.com/cmake-wheel/cmeel-example/compare/v0.5.4...v0.5.5
