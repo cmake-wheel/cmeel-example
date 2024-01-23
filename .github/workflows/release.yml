@@ -71,6 +71,8 @@ jobs:
     needs: ["wheel", "sdist"]
     if: ${{ startsWith(github.ref, 'refs/tags/v') }}
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -81,10 +83,12 @@ jobs:
           git verify-tag --raw ${{ github.ref_name }} 2>&1
           | grep -q 'VALIDSIG 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'
       - uses: actions/download-artifact@v4
-      - run: pipx install twine
-      - run: twine upload -u __token__ -p "${{ secrets.PYPI_TOKEN }}" artifact*/*.whl
-      - run: twine upload -u __token__ -p "${{ secrets.PYPI_TOKEN }}" artifact*/*.tar.gz || true
+      - run: mkdir dist && mv artifact*/* dist
       - run: echo "TAG=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
-      - run: gh release create -t "Release ${{ env.TAG}}" -n "$(awk '/## \[${{ env.TAG }}] - /{flag=1;next}/## \[/{flag=0}flag' CHANGELOG.md)" ${{ env.TAG }} artifact*/*
+      - run: gh release create -t "Release ${{ env.TAG}}" -n "$(awk '/## \[${{ env.TAG }}] - /{flag=1;next}/## \[/{flag=0}flag' CHANGELOG.md)" ${{ env.TAG }} dist/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          skip-existing: true
