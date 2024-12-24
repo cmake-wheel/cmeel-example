@@ -15,7 +15,7 @@ env:
 
 jobs:
   wheel:
-    name: "${{ matrix.build }} ${{ matrix.os }} ${{ matrix.arch }}"
+    name: "Wheel ${{ matrix.build }} ${{ matrix.os }} ${{ matrix.arch }}"
     runs-on: "${{ matrix.os }}-latest"
     strategy:
       matrix:
