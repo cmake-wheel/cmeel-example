@@ -25,7 +25,6 @@ pull_request_rules:
       - check-success = "Wheel cp313 macos arm64"
       - check-success = "Wheel cp313 ubuntu aarch64"
       - check-success = "Wheel cp313 ubuntu x86_64"
-      - check-success = "Wheel cp38 macos arm64"
       - check-success = "Wheel cp38 ubuntu aarch64"
       - check-success = "Wheel cp38 ubuntu x86_64"
       - check-success = "Wheel cp39 macos arm64"

@@ -27,6 +27,8 @@ jobs:
             arch: "x86_64"
           - os: "macos"
             arch: "aarch64"
+          - os: "macos"
+            python: "cp38"
           - os: "ubuntu"
             arch: "arm64"
     steps:
