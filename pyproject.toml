@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "cmeel"
-requires = ["cmeel[build]"]
+requires = ["cmeel[build] @ git+https://github.com/cmake-wheel/cmeel.git"]
 
 [project]
 authors = [{email = "guilhem.saurel@laas.fr", name = "Guilhem Saurel"}]
@@ -26,9 +26,6 @@ repository = "https://github.com/cmake-wheel/cmeel-example.git"
 
 [tool.cmeel]
 build-number = 2
-
-[tool.isort]
-profile = "black"
 
 [tool.ruff]
 target-version = "py38"

@@ -1,6 +1,12 @@
 name: Check build
 
-on: ["push", "pull_request"]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 env:
   CMEEL_LOG_LEVEL: DEBUG
@@ -12,7 +18,7 @@ jobs:
     strategy:
       matrix:
         os: ["ubuntu", "macos"]
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,7 +45,7 @@ jobs:
     strategy:
       matrix:
         os: ["ubuntu", "macos"]
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
     steps:
       - uses: actions/download-artifact@v4
       - run: mkdir /tmp/wh
