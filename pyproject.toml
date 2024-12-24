@@ -27,9 +27,6 @@ repository = "https://github.com/cmake-wheel/cmeel-example.git"
 [tool.cmeel]
 build-number = 2
 
-[tool.isort]
-profile = "black"
-
 [tool.ruff]
 target-version = "py38"
 
