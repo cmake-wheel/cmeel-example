@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "cmeel"
-requires = ["cmeel[build] @ git+https://github.com/cmake-wheel/cmeel.git"]
+requires = ["cmeel[build]"]
 
 [project]
 authors = [{email = "guilhem.saurel@laas.fr", name = "Guilhem Saurel"}]
