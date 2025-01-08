@@ -16,20 +16,24 @@ env:
 jobs:
   wheel:
     name: "Wheel ${{ matrix.python }} ${{ matrix.os }} ${{ matrix.arch }}"
-    runs-on: "${{ matrix.os }}-latest"
+    runs-on: "${{ matrix.os }}"
     strategy:
       matrix:
-        os: ["ubuntu", "macos"]
+        os: ["ubuntu-24.04", "macos-13", "macos-14"]
         arch: ["x86_64", "aarch64", "arm64"]
         python: ["cp38", "cp39", "cp310", "cp311", "cp312", "cp313"]
         exclude:
-          - os: "macos"
+          - os: "macos-13"
+            arch: "arm64"
+          - os: "macos-14"
             arch: "x86_64"
-          - os: "macos"
+          - os: "macos-13"
             arch: "aarch64"
-          - os: "macos"
+          - os: "macos-14"
+            arch: "aarch64"
+          - os: "macos-14"
             python: "cp38"
-          - os: "ubuntu"
+          - os: "ubuntu-24.04"
             arch: "arm64"
     steps:
       - uses: actions/checkout@v4
@@ -55,7 +59,7 @@ jobs:
           path: wh/cmeel_example*
 
   sdist:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         with:
@@ -76,7 +80,7 @@ jobs:
   release:
     needs: ["wheel", "sdist"]
     if: ${{ startsWith(github.ref, 'refs/tags/v') }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment: release
     permissions:
       id-token: write
