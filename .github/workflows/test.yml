@@ -36,7 +36,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: "artifact-${{ matrix.os }}-${{ matrix.python-version }}"
-          path: wh
+          path: wh/cmeel_example*
 
   test:
     needs: ["build"]
@@ -58,9 +58,8 @@ jobs:
           python -m pip install -U pip
           python -m pip install wheel simple503
           python -m simple503 --sort --base-url /tmp/wh /tmp/wh
-          python -m pip install -U pip
       - name: install wheel
-        run: python -m pip install -i "file:///tmp/wh" cmeel-example
+        run: python -m pip install -i "file:///tmp/wh" --extra-index-url https://pypi.org/simple cmeel-example
       - name: test binary
         run: cmeel-add 3 4
       - name: test module
