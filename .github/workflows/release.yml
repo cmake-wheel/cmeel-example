@@ -66,12 +66,6 @@ jobs:
           python -m pip install -U pip
           python -m pip install wheel simple503
           python -m simple503 --base-url ${{ github.workspace }}/wheelhouse ${{ github.workspace }}/wheelhouse
-      - name: debug
-        run: ls wheelhouse
-      - name: debug
-        run: cat wheelhouse/index.html
-      - name: debug
-        run: cat wheelhouse/cmeel-example/index.html
       - name: install deps
         run: python -m pip install cmeel
       - name: install wheel
@@ -102,16 +96,6 @@ jobs:
         with:
           name: artifact-sdist
           path: dist
-
-  debug:
-    needs: ["test", "sdist"]
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          merge-multiple: true
-          path: dist
-      - run: ls dist
 
   release:
     needs: ["test", "sdist"]
