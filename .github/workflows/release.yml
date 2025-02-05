@@ -29,7 +29,7 @@ jobs:
         with:
           submodules: 'true'
       - run: pipx install cibuildwheel
-      - run: cibuildwheel --output-dir wh
+      - run: cibuildwheel
         env:
           CIBW_BUILD: "${{ matrix.python }}-*"
           CIBW_MANYLINUX_X86_64_IMAGE: "quay.io/pypa/manylinux_2_28_x86_64"
@@ -39,7 +39,41 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: "artifact-${{ matrix.os }}-${{ matrix.python }}"
-          path: wh/cmeel_example*
+          path: wheelhouse
+
+  test:
+    needs: ["wheel"]
+    name: "Test ${{ matrix.python }} ${{ matrix.os }}"
+    runs-on: "${{ matrix.os }}"
+    strategy:
+      matrix:
+        os: ["ubuntu-24.04", "ubuntu-24.04-arm", "macos-13", "macos-14"]
+        python: ["cp38", "cp39", "cp310", "cp311", "cp312", "cp313"]
+        exclude:
+          - os: "macos-14"
+            python: "cp38"
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: "artifact-${{ matrix.os }}-${{ matrix.python }}"
+          path: wheelhouse
+      - run: echo "${{ matrix.python }}" | sed "s/cp3/PYTHON_VERSION=3./" >> "${GITHUB_ENV}"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: index
+        run: |
+          python -m pip install -U pip
+          python -m pip install wheel simple503
+          python -m simple503 --base-url ${{ github.workspace }}/wheelhouse ${{ github.workspace }}/wheelhouse
+      - name: install wheel
+        run: python -m pip install -i "file://${{ github.workspace }}/wheelhouse" cmeel-example
+      - name: test binary
+        run: cmeel-add 3 4
+      - name: test module
+        run: python -c "import cmeel_example; assert cmeel_example.cmeel_add(3, 4) == 7"
+        env:
+          PYTHONWARNINGS: error
 
   sdist:
     runs-on: ubuntu-24.04
@@ -61,62 +95,18 @@ jobs:
           name: artifact-sdist
           path: dist
 
-  index:
-    needs: ["wheel", "sdist"]
-    runs-on: "ubuntu-24.04"
-    steps:
-      - uses: actions/download-artifact@v4
-      - run: mkdir dist && mv artifact-*/* dist
-      - uses: actions/setup-python@v5
-        with:
-          python-version: 3.13
-      - name: index
-        run: |
-          python -m pip install -U pip
-          python -m pip install wheel simple503
-          python -m simple503 --base-url ${{ github.workspace }}/dist ${{ github.workspace }}/dist
-      - run: echo "${{ github.workspace }}/dist"
-      - run: tree "${{ github.workspace }}/dist"
-      - run: cat dist/index.html
-      - run: cat dist/cmeel-example/index.html
-      - uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist
-
-  test:
-    needs: ["index"]
-    name: "Test ${{ matrix.python }} ${{ matrix.os }}"
-    runs-on: "${{ matrix.os }}"
-    strategy:
-      matrix:
-        os: ["ubuntu-24.04", "ubuntu-24.04-arm", "macos-13", "macos-14"]
-        python: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
-        exclude:
-          - os: "macos-14"
-            python: "3.8"
+  debug:
+    needs: ["test", "sdist"]
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: dist
+          name: "artifact-*"
           path: dist
-      - run: ls
-      - run: echo "${{ github.workspace }}/dist"
-      - run: ls "${{ github.workspace }}/dist"
-      - uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python }}
-      - name: install wheel
-        run: python -m pip install -i "file://${{ github.workspace }}/dist" --extra-index-url https://pypi.org/simple cmeel-example
-      - name: test binary
-        run: cmeel-add 3 4
-      - name: test module
-        run: python -c "import cmeel_example; assert cmeel_example.cmeel_add(3, 4) == 7"
-        env:
-          PYTHONWARNINGS: error
+      - run: ls dist
 
   release:
-    needs: ["test"]
+    needs: ["test", "sdist"]
     if: ${{ startsWith(github.ref, 'refs/tags/v') }}
     runs-on: ubuntu-24.04
     environment: release
@@ -134,7 +124,7 @@ jobs:
           | grep -q 'VALIDSIG 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'
       - uses: actions/download-artifact@v4
         with:
-          name: dist
+          name: "artifact-*"
           path: dist
       - run: echo "TAG=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
       - run: gh release create -t "Release ${{ env.TAG}}" -n "$(awk '/## \[${{ env.TAG }}] - /{flag=1;next}/## \[/{flag=0}flag' CHANGELOG.md)" ${{ env.TAG }} dist/*
