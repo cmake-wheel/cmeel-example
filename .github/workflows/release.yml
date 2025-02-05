@@ -109,7 +109,6 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: "artifact-*"
           path: dist
       - run: ls dist
 
@@ -132,7 +131,6 @@ jobs:
           | grep -q 'VALIDSIG 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'
       - uses: actions/download-artifact@v4
         with:
-          name: "artifact-*"
           path: dist
       - run: echo "TAG=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
       - run: gh release create -t "Release ${{ env.TAG}}" -n "$(awk '/## \[${{ env.TAG }}] - /{flag=1;next}/## \[/{flag=0}flag' CHANGELOG.md)" ${{ env.TAG }} dist/*
