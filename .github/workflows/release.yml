@@ -79,6 +79,8 @@ jobs:
         run: echo "${{ github.workspace }}/dist"
       - name: debug
         run: tree "${{ github.workspace }}/dist"
+      - name: debug
+        run: cat dist/index.html
       - uses: actions/upload-artifact@v4
         with:
           name: dist
@@ -99,6 +101,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: dist
+          path: dist
       - name: debug
         run: ls
       - name: debug
@@ -137,6 +140,9 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: dist
+          path: dist
+      - name: unindex
+        run: mv dist/*/*.whl dist
       - run: echo "TAG=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
       - run: gh release create -t "Release ${{ env.TAG}}" -n "$(awk '/## \[${{ env.TAG }}] - /{flag=1;next}/## \[/{flag=0}flag' CHANGELOG.md)" ${{ env.TAG }} dist/*
         env:
