@@ -8,9 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - Add support for python 3.13
-- Move macos support from x86_64 to arm64 on github actions
+- Full linux/macos arm/intel support via github, except python 3.8 on macos arm
 - Drop Cirrus CI
-- Drop support for python 3.8 on macos
 - black + isort -> ruff
 - fix mergify configuration
 
