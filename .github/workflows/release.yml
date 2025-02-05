@@ -75,12 +75,10 @@ jobs:
           python -m pip install -U pip
           python -m pip install wheel simple503
           python -m simple503 --base-url ${{ github.workspace }}/dist ${{ github.workspace }}/dist
-      - name: debug
-        run: echo "${{ github.workspace }}/dist"
-      - name: debug
-        run: tree "${{ github.workspace }}/dist"
-      - name: debug
-        run: cat dist/index.html
+      - run: echo "${{ github.workspace }}/dist"
+      - run: tree "${{ github.workspace }}/dist"
+      - run: cat dist/index.html
+      - run: cat dist/cmeel-example/index.html
       - uses: actions/upload-artifact@v4
         with:
           name: dist
@@ -102,12 +100,9 @@ jobs:
         with:
           name: dist
           path: dist
-      - name: debug
-        run: ls
-      - name: debug
-        run: echo "${{ github.workspace }}/dist"
-      - name: debug
-        run: ls "${{ github.workspace }}/dist"
+      - run: ls
+      - run: echo "${{ github.workspace }}/dist"
+      - run: ls "${{ github.workspace }}/dist"
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
