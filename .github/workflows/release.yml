@@ -66,6 +66,12 @@ jobs:
           python -m pip install -U pip
           python -m pip install wheel simple503
           python -m simple503 --base-url ${{ github.workspace }}/wheelhouse ${{ github.workspace }}/wheelhouse
+      - name: debug
+        run: ls wheelhouse
+      - name: debug
+        run: cat wheelhouse/index.html
+      - name: debug
+        run: cat wheelhouse/cmeel-example/index.html
       - name: install wheel
         run: python -m pip install -i "file://${{ github.workspace }}/wheelhouse" cmeel-example
       - name: test binary
