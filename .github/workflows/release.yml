@@ -107,7 +107,7 @@ jobs:
       - name: debug
         run: echo "${{ github.workspace }}/dist"
       - name: debug
-        run: tree "${{ github.workspace }}/dist"
+        run: ls "${{ github.workspace }}/dist"
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
