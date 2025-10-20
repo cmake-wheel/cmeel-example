@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.22)
 
 # Project properties
 set(PROJECT_ORG cmake-wheel)
@@ -14,17 +14,27 @@ option(SUFFIX_SO_VERSION "Suffix library name with its version" ON)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
 set(CUSTOM_HEADER_DIR cmeel/example)
 
-include(FetchContent)
-
 # Check if the submodule cmake have been initialized
 set(JRL_CMAKE_MODULES "${CMAKE_CURRENT_LIST_DIR}/cmake")
-if(NOT EXISTS "${CMAKE_SOURCE_DIR}/cmake/base.cmake")
-  message(STATUS "JRL cmakemodules not found. Let's fetch it.")
-  FetchContent_Declare(
-    "jrl-cmakemodules"
-    GIT_REPOSITORY "https://github.com/jrl-umi3218/jrl-cmakemodules.git")
-  FetchContent_MakeAvailable("jrl-cmakemodules")
-  FetchContent_GetProperties("jrl-cmakemodules" SOURCE_DIR JRL_CMAKE_MODULES)
+if(EXISTS "${JRL_CMAKE_MODULES}/base.cmake")
+  message(STATUS "JRL cmakemodules found in 'cmake/' git submodule")
+else()
+  find_package(jrl-cmakemodules QUIET CONFIG)
+  if(jrl-cmakemodules_FOUND)
+    get_property(
+      JRL_CMAKE_MODULES
+      TARGET jrl-cmakemodules::jrl-cmakemodules
+      PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
+    message(STATUS "JRL cmakemodules found on system at ${JRL_CMAKE_MODULES}")
+  else()
+    message(STATUS "JRL cmakemodules not found. Let's fetch it.")
+    include(FetchContent)
+    FetchContent_Declare(
+      "jrl-cmakemodules"
+      GIT_REPOSITORY "https://github.com/jrl-umi3218/jrl-cmakemodules.git")
+    FetchContent_MakeAvailable("jrl-cmakemodules")
+    FetchContent_GetProperties("jrl-cmakemodules" SOURCE_DIR JRL_CMAKE_MODULES)
+  endif()
 endif()
 
 # JRL-cmakemodule setup
@@ -92,4 +102,3 @@ install(
   DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS ${${PROJECT_NAME}_EXE}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES package.xml DESTINATION share/${PROJECT_NAME})

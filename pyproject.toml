@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "cmeel"
-requires = ["cmeel[build]"]
+requires = ["cmeel[build]", "jrl-cmakemodules"]
 
 [project]
 authors = [{email = "guilhem.saurel@laas.fr", name = "Guilhem Saurel"}]
@@ -16,16 +16,13 @@ classifiers = [
 description = "This is an example project, to show how to use cmeel"
 license = "BSD-2-Clause"
 name = "cmeel-example"
-requires-python = ">= 3.8"
+requires-python = ">= 3.10"
 version = "0.7.2"
 
 [project.urls]
 changelog = "https://github.com/cmake-wheel/cmeel-example/blob/main/CHANGELOG.md"
 homepage = "https://github.com/cmake-wheel/cmeel-example"
 repository = "https://github.com/cmake-wheel/cmeel-example.git"
-
-[tool.ruff]
-target-version = "py38"
 
 [tool.tomlsort]
 all = true
