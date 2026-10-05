@@ -3,7 +3,7 @@ build-backend = "cmeel"
 requires = ["cmeel[build]", "jrl-cmakemodules", "pybind11"]
 
 [project]
-authors = [{email = "guilhem.saurel@laas.fr", name = "Guilhem Saurel"}]
+authors = [{ email = "guilhem.saurel@laas.fr", name = "Guilhem Saurel" }]
 classifiers = [
   "Operating System :: MacOS",
   "Operating System :: POSIX :: Linux",
